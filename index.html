@@ -99,7 +99,7 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
   content: ""; position: absolute; top: 23px; left: 50%; transform: translateX(-50%);
   width: 112px; height: 32px; border-radius: 20px; background: #000; z-index: 50;
 }
-.screen-wrap { position: relative; width: 100%; height: 100%; border-radius: 46px; overflow: hidden; background: var(--surface); isolation: isolate; }
+.screen-wrap { position: relative; width: 100%; height: 100%; border-radius: 46px; overflow: hidden; overflow: clip; background: var(--surface); isolation: isolate; }
 .screen { position: absolute; inset: 0; display: flex; flex-direction: column; background: var(--surface); color: var(--ink); }
 .screen[hidden] { display: none; }
 .scroll { flex: 1; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
@@ -374,14 +374,41 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
 .item.new { animation: pop .5s ease-out; }
 @keyframes pop { from { background: var(--green-tint); } to { background: transparent; } }
 .add-item { align-self: flex-start; display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 600; color: var(--green-dark); padding: 6px 0 2px; }
-.usual-cap { font-size: 11.5px; color: var(--muted); padding: 8px 12px 6px; border-top: 1px solid var(--line); margin-top: 4px; }
-.usual { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 12px 10px; }
-.uchip { flex: 1 1 auto; white-space: nowrap; border: 1.5px solid var(--line); border-radius: 12px; padding: 6px 6px; font-size: 10px; font-weight: 600; color: var(--muted); display: flex; flex-direction: column; align-items: center; gap: 1px; background: var(--surface); text-align: center; line-height: 1.25; min-width: 0; }
-.uchip .n { display: flex; align-items: center; gap: 3px; }
-.uchip .pr { font-size: 11.5px; font-variant-numeric: tabular-nums; }
+.sugg { border-top: 1px solid var(--line); margin-top: 4px; padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 8px; }
+.sugg-head { display: flex; align-items: flex-start; gap: 8px; }
+.sugg-head .ttl { font-size: 13px; font-weight: 700; color: var(--green-dark); display: flex; align-items: center; gap: 5px; }
+.sugg-head .sub { font-size: 11px; color: var(--muted); line-height: 1.35; margin-top: 1px; }
+.sugg-head .acts { margin-left: auto; display: flex; gap: 5px; flex: none; }
+.sugg-head .btn-mini.on { background: var(--green); border-color: var(--green); color: #fff; }
+.sugg-cap { font-size: 11.5px; color: var(--ink-2); font-weight: 500; }
+.usual { display: flex; flex-direction: column; gap: 9px; }
+.ugroup { display: flex; flex-direction: column; gap: 5px; }
+.ugroup .gl { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.uchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.uchip { position: relative; flex: 0 1 auto; border: 1.5px solid var(--line); border-radius: 12px; padding: 5px 9px 6px; display: flex; flex-direction: column; align-items: flex-start; gap: 0; background: var(--surface); text-align: left; line-height: 1.3; min-width: 0; color: var(--ink-2); }
+.uchip .n { display: flex; align-items: center; gap: 3px; font-size: 11.5px; font-weight: 700; white-space: nowrap; }
+.uchip .pr { font-size: 11px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--muted); }
+.uchip .why { font-size: 10px; color: var(--muted); }
 .uchip svg { display: none; color: var(--green); stroke-width: 3; }
 .uchip[aria-pressed="true"] { border-color: var(--green); background: var(--green-tint-2); color: var(--green-dark); }
 .uchip[aria-pressed="true"] svg { display: inline; }
+.uchip[aria-pressed="true"] .pr { color: var(--green-dark); }
+.uchip.rcpt { border-style: dashed; border-color: var(--green-line); background: var(--surface); color: var(--ink-2); }
+.uchip.rcpt svg { color: var(--muted); }
+.uchip.rcpt .pr { color: var(--muted); text-decoration: line-through; text-decoration-color: rgba(0, 0, 0, .25); }
+.uchip.rcpt .why { color: var(--green-dark); font-weight: 600; }
+.editing .uchip { border-style: dashed; }
+.uchip .rm { position: absolute; top: -7px; right: -7px; width: 19px; height: 19px; border-radius: 50%; background: var(--red); color: #fff; font-size: 13px; font-weight: 700; display: grid; place-items: center; line-height: 1; border: 2px solid var(--surface); }
+.add-usual { align-self: flex-start; display: inline-flex; align-items: center; gap: 5px; border: 1.5px dashed var(--green); color: var(--green-dark); border-radius: 12px; padding: 7px 12px; font-size: 12px; font-weight: 600; }
+.sheet.tall { max-height: 86%; overflow-y: auto; }
+.why-src { display: flex; flex-wrap: wrap; gap: 6px; }
+.why-src span { background: var(--green-tint); color: var(--green-dark); border-radius: 999px; padding: 4px 10px; font-size: 11.5px; }
+.why-list { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 12px; }
+.why-row { display: grid; grid-template-columns: 110px 1fr; gap: 8px; padding: 7px 10px; border-top: 1px solid var(--line); font-size: 12px; align-items: start; }
+.why-row:first-child { border-top: 0; }
+.why-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.why-tags span { background: var(--surface-2); border-radius: 6px; padding: 1px 6px; font-size: 11px; color: var(--ink-2); }
+.why-tags .none { background: none; color: var(--muted); }
 .rent { display: grid; grid-template-columns: 22px 1fr auto 52px; align-items: center; gap: 10px; padding: 9px 12px; background: var(--surface-2); font-size: 12.5px; color: var(--ink-2); }
 .rent .lock { color: var(--ink-2); font-size: 16px; }
 .rent .p { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
@@ -649,9 +676,9 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
       <p class="long">Most stalls still write sales in a paper notebook. Recording here takes the same 30 seconds, and it turns into a live profit picture.</p>
       <ul class="points">
         <li><span class="num">4.1</span><div><b>Income</b>Grab orders sync on their own. Bank QR sales come from a screenshot, cash is spoken in the merchant's dialect, and Grab Tap to Pay (coming 2027) fills in the rest.</div></li>
-        <li><span class="num">4.2</span><div><b>Expense</b>Snap a market bill and MeeTang reads every line. A cost template for the stall type (Isan stall, made-to-order, noodles, drinks) lists the usual costs to tap.</div></li>
+        <li><span class="num">4.2</span><div><b>Expense</b>Snap a market bill and MeeTang reads every line. MeeTang also reads the menu (Som Tam, Larb, Gai Yang, Tam Talay…) and suggests the usual costs: pork, chicken, seafood, papaya, herbs, pla ra. The merchant taps what they bought and adjusts the list.</div></li>
       </ul>
-      <p class="hint">Try: tap the mic, Upload, Snap receipt, a template chip, or any cost line to edit it.</p>
+      <p class="hint">Try: tap the mic, Upload, Snap receipt, a suggested cost, <em>Why?</em> or <em>Adjust</em>, or any cost line to edit it.</p>
     </section>
 
     <section class="note-panel" data-note="money" hidden>
@@ -935,8 +962,8 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
 
             <div class="ledger out">
               <div class="ledger-head"><span class="arr"><svg class="i"><use href="#i-arrow-down"/></svg></span>Money out<span class="amt" id="outTotal">฿1,390</span></div>
-              <div class="tpl" role="group" aria-label="Cost template">
-                <span class="lbl">Cost template</span>
+              <div class="tpl" role="group" aria-label="Stall type">
+                <span class="lbl">Stall type</span>
                 <button class="tchip" data-tpl="isan" aria-pressed="true"><svg class="i"><use href="#i-check"/></svg>Isan stall</button>
                 <button class="tchip" data-tpl="made" aria-pressed="false"><svg class="i"><use href="#i-check"/></svg>Made-to-order</button>
                 <button class="tchip" data-tpl="noodle" aria-pressed="false"><svg class="i"><use href="#i-check"/></svg>Noodles</button>
@@ -949,8 +976,14 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
               </div>
               <div class="items" id="items"></div>
               <div class="items"><button class="add-item" id="addItem"><svg class="i"><use href="#i-plus"/></svg>Add item by hand</button></div>
-              <div class="usual-cap">Usual costs from template · tap what you bought today</div>
-              <div class="usual" id="usual"></div>
+              <div class="sugg">
+                <div class="sugg-head">
+                  <div><div class="ttl" id="suggTitle"></div><div class="sub" id="suggSub"></div></div>
+                  <div class="acts"><button class="btn-mini" id="whyBtn">Why?</button><button class="btn-mini" id="adjustBtn">Adjust</button></div>
+                </div>
+                <div class="sugg-cap" id="suggCap"></div>
+                <div class="usual" id="usual"></div>
+              </div>
               <div class="rent"><svg class="i lock"><use href="#i-lock"/></svg><span>Stall rent · daily</span><span class="tag-auto">Auto</span><span class="p">฿60</span></div>
             </div>
           </div>
@@ -1052,11 +1085,21 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
           </div>
           <div class="fld"><label for="fQty">Amount</label><div class="box"><svg class="i ic"><use href="#i-scale"/></svg><input id="fQty" type="number" inputmode="decimal" min="0" step="any" required><span class="unit"><select id="fUnit" aria-label="Unit"><option>kg</option><option>g</option><option>pcs</option><option>pack</option><option>bottle</option></select></span></div></div>
           <div class="fld"><label for="fPrice">Price paid (฿)</label><div class="box"><svg class="i ic"><use href="#i-baht"/></svg><input id="fPrice" type="number" inputmode="decimal" min="0" step="any" required></div></div>
-          <div class="fld"><label for="fCat">Category (optional)</label><div class="box"><svg class="i ic"><use href="#i-tag"/></svg><select id="fCat"><option value="">Choose a category…</option><option>Meat &amp; fish</option><option>Vegetables</option><option>Rice &amp; noodles</option><option>Sauces &amp; spices</option><option>Packaging</option><option>Fuel</option></select></div></div>
+          <div class="fld"><label for="fCat">Category (optional)</label><div class="box"><svg class="i ic"><use href="#i-tag"/></svg><select id="fCat"><option value="">Choose a category…</option><option>Meat &amp; fish</option><option>Vegetables</option><option>Rice &amp; noodles</option><option>Sauces &amp; spices</option><option>Packaging &amp; fuel</option></select></div></div>
           <button type="button" class="convert" id="fConvert"><svg class="i"><use href="#i-swap"/></svg>Convert unit</button>
           <div class="per-unit" id="fPer">฿90 per kg</div>
           <button class="btn-primary" type="submit">Save item</button>
         </form>
+      </div>
+
+      <div class="sheet tall" id="whySheet" role="dialog" aria-label="How MeeTang picked your usual costs">
+        <span class="grab"></span>
+        <button class="x" data-close aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button>
+        <h3>How MeeTang picked these</h3>
+        <p>MeeTang matched each dish on your Grab menu with common Isan recipes, then took amounts and prices from your receipts.</p>
+        <div class="why-src"><span><b>10</b> menu items</span><span><b>18</b> receipts · 30 days</span><span><b>Isan stall</b> detected</span></div>
+        <div class="why-list" id="whyList"></div>
+        <button class="btn-primary" id="whyAdjust">Adjust suggestions</button>
       </div>
 
       <div class="sheet" id="priceSheet" role="dialog" aria-label="Change price">
@@ -1155,7 +1198,8 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
 
   function focusFix() {
     var card = $("#fixCard");
-    card.scrollIntoView({ behavior: "smooth", block: "start" });
+    var sc = $("#alertScroll");
+    sc.scrollTo({ top: sc.scrollTop + card.getBoundingClientRect().top - sc.getBoundingClientRect().top - 12, behavior: "smooth" });
     card.classList.remove("flash"); void card.offsetWidth; card.classList.add("flash");
   }
 
@@ -1410,16 +1454,71 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
     { icon: "assets/ing-papaya.png", name: "Green papaya", qty: 10, unit: "kg", price: 200, cat: "Vegetables" },
     { icon: "assets/ing-rice.png", name: "Sticky rice", qty: 10, unit: "kg", price: 380, cat: "Rice & noodles" }
   ];
-  var TEMPLATES = {
-    isan: [{ n: "Pla ra & fish sauce", p: 90, on: true }, { n: "Ice", p: 60, on: true }, { n: "Boxes ×50", p: 150, on: true }, { n: "Charcoal", p: 80, on: false }],
-    made: [{ n: "Basil & chili", p: 70, on: true }, { n: "Eggs ×30", p: 120, on: true }, { n: "Cooking oil", p: 95, on: false }, { n: "Cooking gas", p: 150, on: false }],
-    noodle: [{ n: "Rice noodles", p: 110, on: true }, { n: "Pork bones", p: 180, on: true }, { n: "Bean sprouts", p: 40, on: true }, { n: "Bowls ×50", p: 125, on: false }],
-    drinks: [{ n: "Ice", p: 60, on: true }, { n: "Cups ×100", p: 180, on: true }, { n: "Syrups", p: 120, on: false }, { n: "Straws", p: 35, on: false }]
-  };
   var EMOJI = ["🍗", "🥬", "🍚", "🥚", "🧄", "🌶️", "🥩", "🐟", "🧂", "🧊", "🥡", "🔥"];
   var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
   var iconHTML = function (ic) { return /\.(png|jpe?g)$/.test(ic) ? '<img src="' + ic + '" alt="">' : '<span class="emo">' + ic + "</span>"; };
   var qtyTxt = function (it) { return (+it.qty).toLocaleString("en-US", { maximumFractionDigits: 2 }) + " " + it.unit; };
+  /* Stall menu that MeeTang analysed (from the merchant's Grab menu) */
+  var DISHES = ["Som Tam Thai", "Som Tam Poo Pla Ra", "Tam Talay", "Larb Moo", "Nam Tok Moo", "Kor Moo Yang", "Gai Yang", "Tom Saep", "Sai Krok Isan", "Sticky rice"];
+  var ALL = DISHES.map(function (_, i) { return i; });
+  var GROUP_ICON = { "Meat & fish": "🥩", "Vegetables": "🥬", "Rice & noodles": "🍚", "Sauces & spices": "🧂", "Packaging & fuel": "📦" };
+  var u = function (n, qty, unit, p, d, extra) {
+    var o = { n: n, qty: qty, unit: unit, p: p, d: d, on: false };
+    for (var k in extra || {}) o[k] = extra[k];
+    return o;
+  };
+  var TEMPLATES = {
+    isan: { name: "Isan stall", analysed: true, groups: [
+      { g: "Meat & fish", items: [
+        u("Pork", 4, "kg", 560, [3, 4, 5, 7, 8]),
+        u("Chicken", 5, "kg", 450, [6], { match: "Chicken" }),
+        u("Seafood mix", 1.5, "kg", 330, [2]),
+        u("Pickled crab", 1, "pack", 45, [1])
+      ] },
+      { g: "Vegetables", items: [
+        u("Green papaya", 10, "kg", 200, [0, 1, 2], { match: "Green papaya" }),
+        u("Tomato & long bean", 3, "kg", 70, [0, 1, 2]),
+        u("Herbs & shallot", 1, "kg", 60, [3, 4, 7]),
+        u("Cabbage & sides", 2, "kg", 40, [0, 1, 2, 3, 4])
+      ] },
+      { g: "Rice & noodles", items: [
+        u("Sticky rice", 10, "kg", 380, ALL, { match: "Sticky rice" }),
+        u("Toasted rice powder", 0.5, "kg", 25, [3, 4])
+      ] },
+      { g: "Sauces & spices", items: [
+        u("Pla ra & fish sauce", 1, "bottle", 90, [0, 1, 2, 3, 4, 7], { on: true }),
+        u("Chili, lime & garlic", 2, "kg", 80, [0, 1, 2, 3, 4, 5, 6, 7]),
+        u("Palm sugar", 1, "kg", 35, [0, 1, 2])
+      ] },
+      { g: "Packaging & fuel", items: [
+        u("Ice", 1, "pack", 60, [], { on: true, why: "Daily use" }),
+        u("Boxes", 50, "pcs", 150, ALL, { on: true }),
+        u("Charcoal", 1, "pack", 80, [5, 6, 8])
+      ] }
+    ] },
+    made: { name: "Made-to-order", analysed: false, groups: [{ g: "Starter list", items: [
+      u("Basil & chili", 1, "kg", 70, [], { on: true }), u("Eggs", 30, "pcs", 120, [], { on: true }),
+      u("Cooking oil", 1, "bottle", 95, []), u("Cooking gas", 1, "pack", 150, [])
+    ] }] },
+    noodle: { name: "Noodles", analysed: false, groups: [{ g: "Starter list", items: [
+      u("Rice noodles", 3, "kg", 110, [], { on: true }), u("Pork bones", 3, "kg", 180, [], { on: true }),
+      u("Bean sprouts", 1, "kg", 40, [], { on: true }), u("Bowls", 50, "pcs", 125, [])
+    ] }] },
+    drinks: { name: "Drinks", analysed: false, groups: [{ g: "Starter list", items: [
+      u("Ice", 1, "pack", 60, [], { on: true }), u("Cups", 100, "pcs", 180, [], { on: true }),
+      u("Syrups", 1, "bottle", 120, []), u("Straws", 1, "pack", 35, [])
+    ] }] }
+  };
+  rec.adjust = false;
+  var onReceipt = function (c) {
+    return !!c.match && items.some(function (it) { return it.name.toLowerCase() === c.match.toLowerCase(); });
+  };
+  var whyTxt = function (c) {
+    if (c.why) return c.why;
+    if (!c.d || !c.d.length) return "Added by you";
+    if (c.d.length === DISHES.length) return "All dishes";
+    return c.d.length === 1 ? DISHES[c.d[0]] : c.d.length + " dishes";
+  };
 
   function renderItems(flashIdx) {
     $("#items").innerHTML = items.map(function (it, i) {
@@ -1428,14 +1527,48 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
     }).join("");
   }
   function renderUsual() {
-    $("#usual").innerHTML = TEMPLATES[rec.tpl].map(function (c, i) {
-      return '<button class="uchip" data-u="' + i + '" aria-pressed="' + c.on + '"><span class="n"><svg class="i"><use href="#i-check"/></svg>' + esc(c.n) + '</span><span class="pr">' + fmt(c.p) + "</span></button>";
+    var T = TEMPLATES[rec.tpl], count = 0;
+    var html = T.groups.map(function (grp, gi) {
+      if (!grp.items.length && !rec.adjust) return "";
+      return '<div class="ugroup"><span class="gl">' + esc(grp.g) + '</span><div class="uchips">' + grp.items.map(function (c, i) {
+        count++;
+        var r = onReceipt(c);
+        return '<button class="uchip' + (r ? " rcpt" : "") + '" data-g="' + gi + '" data-u="' + i + '" aria-pressed="' + (r || c.on) + '">' +
+          '<span class="n"><svg class="i"><use href="#i-check"/></svg>' + esc(c.n) + "</span>" +
+          '<span class="pr">' + fmt(c.p) + " · " + qtyTxt({ qty: c.qty, unit: c.unit }) + "</span>" +
+          '<span class="why">' + (r ? "On receipt" : esc(whyTxt(c))) + "</span>" +
+          (rec.adjust ? '<span class="rm" data-rm aria-label="Remove ' + esc(c.n) + '">×</span>' : "") + "</button>";
+      }).join("") + "</div></div>";
+    }).join("");
+    if (rec.adjust) html += '<button class="add-usual" id="addUsual"><svg class="i"><use href="#i-plus"/></svg>Add a usual cost</button>';
+    $("#usual").innerHTML = html;
+    $("#usual").classList.toggle("editing", rec.adjust);
+    $("#suggTitle").innerHTML = T.analysed ? '<svg class="i"><use href="#i-spark"/></svg>Suggested for your stall' : "Starter list · " + esc(T.name);
+    $("#suggSub").textContent = T.analysed ? "From your 10 menu items and 30 days of receipts" : "Common costs for this stall type. Your menu looks like an Isan stall";
+    $("#whyBtn").hidden = !T.analysed;
+    $("#adjustBtn").textContent = rec.adjust ? "Done" : "Adjust";
+    $("#adjustBtn").classList.toggle("on", rec.adjust);
+    $("#suggCap").textContent = rec.adjust ? "Tap a cost to edit it, or × to remove it" : "Tap what you bought today · " + count + " usual costs";
+  }
+  function usualTotal() {
+    return TEMPLATES[rec.tpl].groups.reduce(function (a, grp) {
+      return a + grp.items.reduce(function (b, c) { return b + (c.on && !onReceipt(c) ? c.p : 0); }, 0);
+    }, 0);
+  }
+  function renderWhy() {
+    var T = TEMPLATES.isan;
+    var every = [];
+    T.groups.forEach(function (grp) { grp.items.forEach(function (c) { if (c.d && c.d.length === DISHES.length) every.push(c.n); }); });
+    $("#whyList").innerHTML = (every.length ? '<div class="why-row"><b>Every dish</b><span class="why-tags">' + every.map(function (n) { return "<span>" + esc(n) + "</span>"; }).join("") + "</span></div>" : "") + DISHES.filter(function (d) { return d !== "Sticky rice"; }).map(function (dish) {
+      var di = DISHES.indexOf(dish);
+      var ing = [];
+      T.groups.forEach(function (grp) { grp.items.forEach(function (c) { if (c.d && c.d.length < DISHES.length && c.d.indexOf(di) > -1) ing.push(c.n); }); });
+      return '<div class="why-row"><b>' + dish + '</b><span class="why-tags">' + (ing.length ? ing.map(function (n) { return "<span>" + esc(n) + "</span>"; }).join("") : '<span class="none">No usual costs linked</span>') + "</span></div>";
     }).join("");
   }
   function totals() {
     var inT = rec.grab + rec.qr + rec.cash;
-    var outT = rec.rent + items.reduce(function (a, it) { return a + (+it.price || 0); }, 0) +
-      TEMPLATES[rec.tpl].reduce(function (a, c) { return a + (c.on ? c.p : 0); }, 0);
+    var outT = rec.rent + items.reduce(function (a, it) { return a + (+it.price || 0); }, 0) + usualTotal();
     return { inT: inT, outT: outT, left: inT - outT };
   }
   function recalc(changed) {
@@ -1454,16 +1587,33 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
   $$(".tchip").forEach(function (c) {
     c.addEventListener("click", function () {
       rec.tpl = c.dataset.tpl;
+      rec.adjust = false;
       $$(".tchip").forEach(function (x) { x.setAttribute("aria-pressed", String(x === c)); });
       renderUsual(); recalc(true);
-      toast("Template: " + c.textContent.trim() + ". Tap what you bought today");
+      toast(TEMPLATES[rec.tpl].analysed ? "Back to suggestions from your menu" : "Starter list for " + TEMPLATES[rec.tpl].name);
     });
   });
   $("#usual").addEventListener("click", function (e) {
+    if (e.target.closest("#addUsual")) { openItem(-1, { g: 0, i: -1 }); return; }
     var b = e.target.closest(".uchip"); if (!b) return;
-    var c = TEMPLATES[rec.tpl][+b.dataset.u];
+    var grp = TEMPLATES[rec.tpl].groups[+b.dataset.g], c = grp.items[+b.dataset.u];
+    if (e.target.closest("[data-rm]")) {
+      grp.items.splice(+b.dataset.u, 1);
+      renderUsual(); recalc(true);
+      toast("Removed " + c.n + ". MeeTang won't suggest it again");
+      return;
+    }
+    if (rec.adjust) { openItem(-1, { g: +b.dataset.g, i: +b.dataset.u }); return; }
+    if (onReceipt(c)) { toast(c.n + " is already counted from your receipt"); return; }
     c.on = !c.on; b.setAttribute("aria-pressed", String(c.on));
     recalc(true);
+  });
+  $("#adjustBtn").addEventListener("click", function () { rec.adjust = !rec.adjust; renderUsual(); });
+  $("#whyBtn").addEventListener("click", function () { renderWhy(); openSheet($("#whySheet")); });
+  $("#whyAdjust").addEventListener("click", function () {
+    closeSheets(); rec.adjust = true; renderUsual();
+    var sc = $("#screen-record .scroll"), el = $(".sugg");
+    sc.scrollTo({ top: sc.scrollTop + el.getBoundingClientRect().top - sc.getBoundingClientRect().top - 8, behavior: "smooth" });
   });
 
   function fakeRead(row, tagEl, busyTxt, doneHTML, msg) {
@@ -1519,10 +1669,16 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
     if (u === "g") t += " · " + fmt(p / q * 1000) + " per kg";
     $("#fPer").textContent = t;
   }
-  function openItem(i) {
-    editIdx = i;
+  var editUsual = null;
+  function openItem(i, usual) {
+    editIdx = i; editUsual = usual || null;
     var it = i > -1 ? items[i] : { icon: "🥚", name: "", qty: "", unit: "kg", price: "", cat: "" };
-    $("#itemSheetTitle").textContent = i > -1 ? "Edit item" : "Add item";
+    if (usual) {
+      var grp = TEMPLATES[rec.tpl].groups[usual.g], c = usual.i > -1 ? grp.items[usual.i] : null;
+      var cat = TEMPLATES[rec.tpl].analysed ? grp.g : "";
+      it = c ? { icon: c.icon || GROUP_ICON[grp.g] || "🧂", name: c.n, qty: c.qty, unit: c.unit, price: c.p, cat: cat } : { icon: "🧂", name: "", qty: "", unit: "kg", price: "", cat: "" };
+    }
+    $("#itemSheetTitle").textContent = usual ? (usual.i > -1 ? "Edit usual cost" : "Add a usual cost") : i > -1 ? "Edit item" : "Add item";
     setIcon(it.icon);
     $("#fName").value = it.name; $("#fQty").value = it.qty; $("#fUnit").value = it.unit;
     $("#fPrice").value = it.price; $("#fCat").value = it.cat || "";
@@ -1547,11 +1703,26 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
     e.preventDefault();
     var it = { icon: fIcon, name: $("#fName").value.trim(), qty: parseFloat($("#fQty").value), unit: $("#fUnit").value, price: parseFloat($("#fPrice").value), cat: $("#fCat").value };
     if (!it.name || !(it.qty > 0) || !(it.price >= 0)) { toast("Add a name, amount and price"); return; }
+    if (editUsual) { saveUsual(it); return; }
     var idx = editIdx;
     if (idx > -1) items[idx] = it; else { items.push(it); idx = items.length - 1; }
-    renderItems(idx); recalc(true); closeSheets();
+    renderItems(idx); renderUsual(); recalc(true); closeSheets();
     toast((editIdx > -1 ? "Updated " : "Added ") + it.name + " · " + fmt(it.price));
   });
+
+  function saveUsual(it) {
+    var T = TEMPLATES[rec.tpl], old = null, from = T.groups[editUsual.g];
+    if (editUsual.i > -1) old = from.items.splice(editUsual.i, 1)[0];
+    var target = from;
+    if (T.analysed && it.cat) {
+      target = T.groups.filter(function (g) { return g.g === it.cat; })[0];
+      if (!target) { target = { g: it.cat, items: [] }; T.groups.push(target); }
+    }
+    var c = { n: it.name, qty: it.qty, unit: it.unit, p: it.price, icon: it.icon, d: old ? old.d : [], on: old ? old.on : true, match: old && old.match, why: old && old.why };
+    if (old && editUsual.g === T.groups.indexOf(target)) target.items.splice(editUsual.i, 0, c); else target.items.push(c);
+    renderUsual(); recalc(true); closeSheets();
+    toast((old ? "Updated " : "Added ") + it.name + " to your usual costs");
+  }
 
   renderItems(); renderUsual(); recalc(false);
 
