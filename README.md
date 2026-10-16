@@ -11,8 +11,12 @@ Open `index.html` in any browser (no build step). On a laptop it shows a phone f
 | Home screen | Home-screen widget (today's sales, MeeTang tip) and the "Sales dipped today" push | Tap the notification, **Fix in 1 tap**, or **Ask MeeTang** |
 | Sales alert | Right-moment alert, voice message in the merchant's dialect, ready-made dish photos | Press play, switch dialect (Central / Isan / Northern / Southern), tap a photo to skip it, **Use these photos** |
 | Learn | Learn while you work: 3-question check-up goal, 10-second lessons, feedback loop | Open each lesson, **Try it now**, thumbs up/down, **Learn something else** |
+| Record | Record today: unified income (Grab auto-sync, Tap to Pay, bank QR screenshot, spoken cash) and expenses (snap receipt, cost templates, stall rent) | Tap the mic, **Upload**, **Snap receipt**, switch cost template, tap usual costs, tap a cost line to edit it or **Add item by hand**, **Save today** |
+| Money Book | Smart dashboard: day/week/month growth, income by channel, profit goal, profit per plate (contribution margin), comparison with 10 nearby Isan stalls | Switch Day/Week/Month, tap a dish for its cost breakdown, **Change price**, **Fix now** |
 
-Deep links: `index.html#home`, `#alert`, `#learn`.
+All totals are live: changing anything in Record today updates Left today and the Money Book numbers. Adding photos on the Alert screen updates the peer comparison.
+
+Deep links: `index.html#home`, `#alert`, `#learn`, `#record`, `#money`.
 
 Voice playback uses the browser's Thai text-to-speech voice when one is installed (Safari/iOS, Chrome on most systems); otherwise the waveform animates without sound.
 

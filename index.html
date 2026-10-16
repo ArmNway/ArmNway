@@ -28,6 +28,7 @@
   --orange-ink: #8A5A12;
   --red: #E5484D;
   --red-tint: #FDECEC;
+  --teal: #1E9BB8;
   --stage: #E9F0EB;
   --stage-ink: #17251D;
   --bezel: #121614;
@@ -67,7 +68,7 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 14px; color: var(--green-dark); }
 .brand img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; background: var(--surface); border: 1.5px solid var(--green-line); }
 .tabs { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
-.tab { flex: 1; padding: 8px 10px; border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--muted); white-space: nowrap; }
+.tab { flex: 1 1 auto; padding: 8px 6px; border-radius: 999px; font-size: 12.5px; font-weight: 600; color: var(--muted); white-space: nowrap; }
 .tab[aria-selected="true"] { background: var(--green); color: #fff; }
 .note-panel { display: flex; flex-direction: column; gap: 14px; }
 .note-panel[hidden] { display: none; }
@@ -297,6 +298,215 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
 .feedback .else { margin-left: auto; height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line); font-size: 12px; font-weight: 600; color: var(--ink-2); background: var(--surface); white-space: nowrap; }
 .feedback .else:hover { border-color: var(--green); color: var(--green-dark); }
 
+/* ---------- Record today ---------- */
+.rec-bar { display: flex; align-items: center; gap: 6px; padding: 4px 10px 10px 6px; }
+.rec-bar .back { font-size: 21px; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; flex: none; }
+.rec-bar .back:hover { background: var(--surface-2); }
+.rec-bar .t { font-weight: 800; font-size: 18px; letter-spacing: -.02em; line-height: 1.1; white-space: nowrap; }
+.rec-bar .s { font-size: 12px; color: var(--muted); }
+.rec-bar .head { margin-right: auto; min-width: 0; flex: 0 1 auto; }
+.rec-bar .head .t { overflow: hidden; text-overflow: ellipsis; }
+.coin-cat { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; flex: none; }
+.rec-bar .dialect-btn, .rec-bar .listen { padding: 0 7px; gap: 3px; font-size: 12px; }
+.rec-feed { display: flex; flex-direction: column; gap: 10px; padding: 0 10px 16px; }
+.ledger { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--surface); }
+.ledger-head { display: flex; align-items: center; gap: 9px; padding: 10px 12px; font-size: 17px; font-weight: 800; letter-spacing: -.01em; }
+.ledger-head .amt { margin-left: auto; font-size: 21px; font-variant-numeric: tabular-nums; }
+.ledger-head .arr { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-size: 14px; flex: none; }
+.ledger-head .arr svg.i { stroke-width: 3; }
+.ledger.in .ledger-head { background: var(--green-tint); }
+.ledger.in .ledger-head .arr { background: var(--green); }
+.ledger.in .ledger-head .amt { color: var(--green-dark); }
+.ledger.out .ledger-head { background: var(--red-tint); }
+.ledger.out .ledger-head .arr { background: var(--red); }
+.ledger.out .ledger-head .amt { color: var(--red); }
+.src { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto auto; align-items: center; gap: 8px; padding: 10px 12px; border-top: 1px solid var(--line); }
+.src:first-of-type { border-top: 0; }
+.src .tile { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; color: #fff; font-size: 18px; }
+.src .tile.g { background: var(--green); }
+.src .tile.grey { background: var(--surface-2); color: var(--ink-2); border: 1px solid var(--line); }
+.src .tile.teal { background: var(--teal); }
+.src .nm { font-size: 13.5px; font-weight: 600; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.src .sb { font-size: 11.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.src .val { font-size: 16px; font-weight: 800; color: var(--green-dark); text-align: right; font-variant-numeric: tabular-nums; min-width: 56px; }
+.src .val.dash { color: var(--muted); font-weight: 500; }
+.tag-auto { background: var(--green); color: #fff; font-size: 11.5px; font-weight: 700; padding: 3px 11px; border-radius: 999px; }
+.tag-soon { border: 1px solid var(--line); color: var(--muted); font-size: 11.5px; font-weight: 600; padding: 3px 11px; border-radius: 999px; background: var(--surface); }
+.tag-read { display: inline-flex; align-items: center; gap: 4px; border: 1.5px solid var(--green); color: var(--green-dark); font-size: 11.5px; font-weight: 700; padding: 2px 9px; border-radius: 999px; }
+.qr-mid { display: flex; align-items: center; gap: 6px; }
+.qr-mid .thumb-scan { width: 34px; height: 36px; }
+.qr-right { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+.btn-mini { border: 1px solid var(--line); border-radius: 999px; font-size: 11.5px; font-weight: 600; padding: 3px 10px; color: var(--ink-2); background: var(--surface); }
+.btn-mini:hover { border-color: var(--green); color: var(--green-dark); }
+.thumb-scan { position: relative; width: 44px; height: 42px; border-radius: 6px; overflow: hidden; flex: none; box-shadow: 0 1px 3px rgba(0, 0, 0, .15); }
+.thumb-scan img { width: 100%; height: 100%; object-fit: cover; }
+.thumb-scan::after { content: ""; position: absolute; left: 0; right: 0; top: -4px; height: 3px; background: var(--green); box-shadow: 0 0 8px var(--green); opacity: 0; }
+.scanning .thumb-scan::after { opacity: 1; animation: scan 1.1s ease-in-out infinite alternate; }
+@keyframes scan { to { top: calc(100% + 1px); } }
+.src.cash { grid-template-columns: 34px minmax(0, 1fr) auto; align-items: start; }
+.cash .said-row { display: flex; align-items: center; gap: 4px; white-space: nowrap; overflow: hidden; background: var(--green-tint-2); border: 1px solid var(--green-line); border-radius: 999px; padding: 3px 9px 3px 0; margin-top: 5px; font-size: 11.5px; font-weight: 600; }
+.cash .said-row span { overflow: hidden; text-overflow: ellipsis; }
+.cash .said-row .play { width: 22px; height: 24px; font-size: 10px; background: transparent; color: var(--green-dark); }
+.cash .val { align-self: center; }
+.cash-right { display: flex; align-items: center; gap: 8px; align-self: center; }
+.mic { width: 40px; height: 40px; border-radius: 50%; background: var(--green); color: #fff; display: grid; place-items: center; font-size: 19px; flex: none; position: relative; }
+.mic.rec { background: var(--red); }
+.mic.rec::after { content: ""; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid var(--red); animation: ring 1s ease-out infinite; }
+@keyframes ring { from { transform: scale(.9); opacity: 1; } to { transform: scale(1.25); opacity: 0; } }
+.tpl { display: flex; align-items: center; gap: 6px; padding: 10px 12px 4px; overflow-x: auto; scrollbar-width: none; }
+.tpl::-webkit-scrollbar { display: none; }
+.tpl .lbl { font-size: 12.5px; color: var(--muted); white-space: nowrap; margin-right: 2px; }
+.tchip { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; border: 1px solid var(--line); border-radius: 999px; padding: 5px 10px; font-size: 11.5px; font-weight: 600; color: var(--ink-2); background: var(--surface); }
+.tchip[aria-pressed="true"] { background: var(--green-dark); border-color: var(--green-dark); color: #fff; }
+.tchip:not([aria-pressed="true"]) svg { display: none; }
+.snap-row { display: flex; align-items: center; gap: 10px; padding: 8px 12px; }
+.snap-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 7px; height: 40px; border: 1.5px solid var(--green); border-radius: 12px; color: var(--green-dark); font-weight: 700; font-size: 14px; background: var(--surface); }
+.snap-btn:hover { background: var(--green-tint-2); }
+.snap-row .thumb-scan { width: 62px; height: 40px; }
+.snap-row .read { font-size: 12px; font-weight: 700; color: var(--green-dark); display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; min-width: 92px; }
+.items { display: flex; flex-direction: column; padding: 0 12px; }
+.item { display: grid; grid-template-columns: 26px 1fr auto; align-items: center; gap: 10px; padding: 7px 0; border-top: 1px solid var(--line); text-align: left; width: 100%; font-size: 13.5px; }
+.item:hover .q { text-decoration: underline; text-decoration-color: var(--green-line); }
+.item img, .item .emo { width: 26px; height: 26px; object-fit: contain; font-size: 19px; line-height: 26px; text-align: center; }
+.item .q b { font-weight: 600; }
+.item .q span { color: var(--muted); }
+.item .p { font-weight: 600; font-variant-numeric: tabular-nums; }
+.item.new { animation: pop .5s ease-out; }
+@keyframes pop { from { background: var(--green-tint); } to { background: transparent; } }
+.add-item { align-self: flex-start; display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 600; color: var(--green-dark); padding: 6px 0 2px; }
+.usual-cap { font-size: 11.5px; color: var(--muted); padding: 8px 12px 6px; border-top: 1px solid var(--line); margin-top: 4px; }
+.usual { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 12px 10px; }
+.uchip { flex: 1 1 auto; white-space: nowrap; border: 1.5px solid var(--line); border-radius: 12px; padding: 6px 6px; font-size: 10px; font-weight: 600; color: var(--muted); display: flex; flex-direction: column; align-items: center; gap: 1px; background: var(--surface); text-align: center; line-height: 1.25; min-width: 0; }
+.uchip .n { display: flex; align-items: center; gap: 3px; }
+.uchip .pr { font-size: 11.5px; font-variant-numeric: tabular-nums; }
+.uchip svg { display: none; color: var(--green); stroke-width: 3; }
+.uchip[aria-pressed="true"] { border-color: var(--green); background: var(--green-tint-2); color: var(--green-dark); }
+.uchip[aria-pressed="true"] svg { display: inline; }
+.rent { display: grid; grid-template-columns: 22px 1fr auto 52px; align-items: center; gap: 10px; padding: 9px 12px; background: var(--surface-2); font-size: 12.5px; color: var(--ink-2); }
+.rent .lock { color: var(--ink-2); font-size: 16px; }
+.rent .p { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+.rec-foot { flex: none; border-top: 1px solid var(--line); background: var(--surface); padding: 10px 14px 26px; display: flex; flex-direction: column; gap: 8px; }
+.left-row { display: flex; align-items: baseline; gap: 10px; }
+.left-row .lbl { font-size: 13px; color: var(--ink-2); }
+.left-row .big { font-size: 25px; font-weight: 800; color: var(--green-dark); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.left-row .io { margin-left: auto; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.rec-foot .about { text-align: center; font-size: 11.5px; color: var(--muted); margin-top: -2px; }
+
+/* ---------- Money Book ---------- */
+.mb-bar { display: flex; align-items: flex-start; gap: 6px; padding: 2px 12px 10px 8px; }
+.mb-bar .back { font-size: 22px; width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; margin-top: 2px; flex: none; }
+.mb-bar .back:hover { background: var(--surface-2); }
+.mb-bar .head { margin-right: auto; display: flex; flex-direction: column; gap: 6px; }
+.mb-bar .t { font-weight: 800; font-size: 19px; letter-spacing: -.02em; }
+.mb-bar .coin-cat { width: 34px; height: 34px; margin-top: 2px; }
+.mb-bar .listen { margin-top: 5px; padding: 0 8px; font-size: 12px; }
+.seg { display: inline-flex; background: var(--surface-2); border-radius: 999px; padding: 3px; gap: 2px; }
+.seg button { font-size: 12px; font-weight: 600; color: var(--muted); padding: 4px 13px; border-radius: 999px; }
+.seg button[aria-selected="true"] { background: var(--surface); color: var(--green-dark); box-shadow: 0 1px 3px rgba(0, 0, 0, .1); }
+.mb-feed { display: flex; flex-direction: column; gap: 10px; padding: 0 12px 40px; background: var(--surface-2); padding-top: 10px; min-height: 100%; }
+.saved-banner { display: flex; align-items: center; gap: 8px; background: var(--green-tint); border-radius: 12px; padding: 9px 12px; font-size: 13px; font-weight: 600; color: var(--green-dark); width: 100%; text-align: left; }
+.saved-banner .ok { width: 20px; height: 20px; border-radius: 50%; background: var(--green); color: #fff; display: grid; place-items: center; font-size: 11px; flex: none; }
+.saved-banner .ok svg.i { stroke-width: 3; }
+.saved-banner .v { margin-left: auto; font-size: 12.5px; }
+.saved-banner.pending { background: var(--orange-tint); color: var(--orange-ink); }
+.saved-banner.pending .ok { background: var(--orange); }
+.mcard { background: var(--surface); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 1px 2px rgba(16, 40, 26, .06); }
+.mcard-h { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.mcard-h h3 { margin: 0; font-size: 15px; font-weight: 700; }
+.mcard-h .r { font-size: 11.5px; color: var(--muted); }
+.week-top { display: grid; grid-template-columns: 1.3fr 1fr; gap: 12px; border-top: 1px solid var(--line); padding-top: 8px; }
+.week-top .k { font-size: 11.5px; color: var(--muted); }
+.week-top .big { font-size: 30px; font-weight: 800; color: var(--green-dark); letter-spacing: -.03em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.vs { display: inline-flex; align-items: center; gap: 3px; background: var(--green-tint); color: var(--green-dark); font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 999px; margin-top: 4px; }
+.vs svg.i { stroke-width: 3; }
+.io-col { border-left: 1px solid var(--line); padding-left: 12px; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+.io-col div { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); align-items: baseline; }
+.io-col b { font-size: 15px; font-variant-numeric: tabular-nums; }
+.io-col .in b { color: var(--green-dark); }
+.io-col .out b { color: var(--red); }
+.bars { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 10px; align-items: end; height: 110px; padding-top: 18px; }
+.bars .b { position: relative; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; }
+.bars .bar { width: 100%; max-width: 34px; border-radius: 5px 5px 2px 2px; background: #94D9AE; transition: height .35s ease; }
+.bars .b.hi .bar { background: var(--green-dark); }
+.bars .b .lab { position: absolute; top: -18px; font-size: 11px; font-weight: 700; color: var(--green-dark); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.bars-x { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 10px; font-size: 10.5px; color: var(--muted); text-align: center; margin-top: -6px; }
+.chan { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 9px; font-size: 10.5px; color: var(--muted); }
+.chan i { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 4px; }
+.chan b { color: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+.chan-bar { display: flex; height: 6px; border-radius: 3px; overflow: hidden; margin-top: -4px; }
+.chan-bar span { transition: width .35s; }
+.c-grab { background: var(--green-dark); }
+.c-qr { background: var(--teal); }
+.c-cash { background: #94D9AE; }
+.goal-row { display: flex; align-items: center; gap: 14px; }
+.donut { width: 66px; height: 66px; flex: none; position: relative; }
+.donut svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.donut span { position: absolute; inset: 0; display: grid; place-items: center; font-size: 15px; font-weight: 800; color: var(--green-dark); font-variant-numeric: tabular-nums; }
+.goal-txt .g { font-size: 16px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.goal-txt .pill { display: inline-block; background: var(--green-tint); color: var(--green-dark); font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 999px; margin: 4px 0 3px; }
+.goal-txt .sub { font-size: 11px; color: var(--muted); }
+.plates { display: flex; flex-direction: column; }
+.plate { border-top: 1px solid var(--line); }
+.plate-row { display: grid; grid-template-columns: 30px 1fr auto 62px 40px; align-items: center; gap: 10px; padding: 7px 0; width: 100%; text-align: left; font-size: 13.5px; }
+.plate-row img { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; }
+.plate-row .nm { font-weight: 600; display: flex; align-items: center; gap: 8px; min-width: 0; }
+.plate-row .pf { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+.plate-row .mg { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
+.lowm { background: var(--orange-tint); color: var(--orange-ink); font-size: 10.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.breakdown { display: none; margin: 0 0 8px 40px; background: var(--surface-2); border-radius: 10px; padding: 8px 10px; font-size: 12px; color: var(--ink-2); }
+.plate.open .breakdown { display: block; }
+.breakdown .ln { display: flex; justify-content: space-between; padding: 2px 0; font-variant-numeric: tabular-nums; }
+.breakdown .tot { border-top: 1px dashed var(--line); margin-top: 4px; padding-top: 5px; font-weight: 700; color: var(--ink); }
+.breakdown .tot.pf { border: 0; margin: 0; padding-top: 2px; color: var(--green-dark); }
+.tipbox { display: flex; align-items: center; gap: 10px; background: var(--green-tint); border-radius: 12px; padding: 8px 10px; font-size: 12.5px; font-weight: 600; color: var(--green-dark); line-height: 1.3; }
+.tipbox img { width: 30px; height: 30px; border-radius: 50%; flex: none; }
+.tipbox .btn-mini { margin-left: auto; border: 1.5px solid var(--green); color: var(--green-dark); padding: 5px 11px; white-space: nowrap; }
+.tipbox.done .btn-mini { display: none; }
+.peer-dots { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); position: relative; padding-top: 20px; }
+.peer-dots .dots { flex: 1; display: flex; justify-content: space-between; align-items: center; }
+.peer-dots .d { width: 13px; height: 13px; border-radius: 50%; background: #D8DFDB; }
+.peer-dots .d.me { width: 22px; height: 22px; background: var(--green); color: #fff; display: grid; place-items: center; font-size: 12px; position: relative; }
+.peer-dots .d.me svg.i { stroke-width: 3; }
+.peer-dots .d.me::before { content: "You · #4"; position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 11.5px; font-weight: 700; color: var(--green-dark); }
+.ptable { display: grid; grid-template-columns: 1fr 60px 64px 22px; gap: 6px 8px; align-items: center; font-size: 12.5px; border-top: 1px solid var(--line); padding-top: 8px; }
+.ptable .h { font-size: 11px; color: var(--muted); }
+.ptable .c { text-align: right; font-variant-numeric: tabular-nums; }
+.ptable .you { font-weight: 700; }
+.ptable .avg { color: var(--muted); }
+.trend { width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; }
+.trend svg.i { stroke-width: 3; }
+.trend.down { background: var(--orange-tint); color: var(--orange); }
+.trend.up { background: var(--green-tint); color: var(--green); }
+.topfix { display: flex; align-items: center; gap: 10px; border: 1.5px solid var(--green-line); background: var(--green-tint-2); border-radius: 12px; padding: 9px 10px; font-size: 12.5px; font-weight: 600; color: var(--green-dark); }
+.topfix .ok { width: 20px; height: 20px; border-radius: 50%; background: var(--green); color: #fff; display: grid; place-items: center; font-size: 11px; flex: none; }
+.topfix .go { margin-left: auto; background: var(--green); color: #fff; font-size: 11.5px; font-weight: 700; padding: 5px 12px; border-radius: 999px; white-space: nowrap; }
+
+/* ---------- Form sheets (add cost item, change price) ---------- */
+.sheet .x { position: absolute; top: 14px; right: 16px; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-size: 16px; color: var(--ink-2); background: var(--surface-2); }
+.form { display: flex; flex-direction: column; gap: 10px; }
+.frow { display: grid; grid-template-columns: 64px 1fr; gap: 10px; }
+.fld { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.fld label, .fld .lab { font-size: 11.5px; font-weight: 600; color: var(--muted); }
+.box { display: flex; align-items: center; gap: 8px; height: 46px; border: 1.5px solid var(--line); border-radius: 14px; padding: 0 12px; background: var(--surface); min-width: 0; }
+.box:focus-within { border-color: var(--green); }
+.box input, .box select { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font: inherit; font-size: 15px; color: var(--ink); }
+.box .ic { color: var(--muted); font-size: 17px; }
+.box .unit { border-left: 1.5px solid var(--line); height: 100%; display: flex; align-items: center; padding-left: 10px; margin-right: -4px; flex: 0 0 auto; }
+.box .unit select { font-weight: 600; }
+.emoji-btn { height: 46px; border: 1.5px solid var(--line); border-radius: 14px; font-size: 24px; display: grid; place-items: center; background: var(--surface); }
+.emoji-btn img { width: 30px; height: 30px; object-fit: contain; }
+.convert { height: 40px; border: 1.5px dashed var(--line); border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.convert .i { color: var(--orange); }
+.per-unit { font-size: 12px; color: var(--muted); text-align: center; font-variant-numeric: tabular-nums; }
+.stepper { display: flex; align-items: center; justify-content: center; gap: 22px; padding: 4px 0; }
+.stepper button { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--line); font-size: 22px; font-weight: 600; color: var(--ink-2); }
+.stepper .pv { font-size: 34px; font-weight: 800; letter-spacing: -.02em; min-width: 100px; text-align: center; font-variant-numeric: tabular-nums; }
+.price-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.price-stats div { background: var(--surface-2); border-radius: 12px; padding: 8px 10px; display: flex; flex-direction: column; gap: 2px; font-size: 11px; color: var(--muted); }
+.price-stats b { font-size: 16px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.price-stats .good b { color: var(--green-dark); }
+.peer-note { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+
 /* ---------- Overlays ---------- */
 .toast { position: absolute; left: 16px; right: 16px; bottom: 30px; z-index: 60; background: var(--ink); color: #fff; border-radius: 14px; padding: 12px 14px; font-size: 13.5px; font-weight: 500; display: flex; align-items: center; gap: 10px; box-shadow: 0 12px 30px -10px rgba(0, 0, 0, .4); transform: translateY(20px); opacity: 0; pointer-events: none; transition: .25s; }
 .toast.show { transform: none; opacity: 1; }
@@ -370,6 +580,20 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
   <symbol id="i-sms" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.9-.9L3 20.5l1.5-4.5A8 8 0 0 1 3 11.5 8.5 8.5 0 0 1 12 3a8.5 8.5 0 0 1 9 8.5z"/></symbol>
   <symbol id="i-photos" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><circle cx="17" cy="12" r="3"/><circle cx="12" cy="17" r="3"/><circle cx="7" cy="12" r="3"/></symbol>
   <symbol id="i-map" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+  <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></symbol>
+  <symbol id="i-chevl" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="i-bike" viewBox="0 0 24 24"><circle cx="5.5" cy="17" r="3"/><circle cx="18.5" cy="17" r="3"/><path d="M8.5 17h5l3-7h-4M5.5 17l3-6h4M14 6h3l1.5 4"/><rect x="2.5" y="7" width="5" height="4" rx="1"/></symbol>
+  <symbol id="i-tap" viewBox="0 0 24 24"><rect x="4" y="3" width="10" height="18" rx="2"/><path d="M8 18h2M17 9a4 4 0 0 1 0 6M19.5 7a7 7 0 0 1 0 10"/></symbol>
+  <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3M21 14v.01M14 21h3M21 17v4h-1"/></symbol>
+  <symbol id="i-cash" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2" fill="currentColor"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z"/></symbol>
+  <symbol id="i-baht" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 7h4a2.5 2.5 0 0 1 0 5H9zm0 5h4.5a2.5 2.5 0 0 1 0 5H9zM9 7v10M12 5v2M12 17v2"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/><path d="M14 6.5h7M3 17.5h7"/></symbol>
+  <symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 8h14l-4-4M20 16H6l4 4"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
   <symbol id="i-sig" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></symbol>
   <symbol id="i-wifi" viewBox="0 0 16 12"><path d="M8 2.3c2.4 0 4.6.9 6.3 2.5l1.2-1.3A10.6 10.6 0 0 0 8 .5C5.2.5 2.6 1.6.5 3.5l1.2 1.3A9 9 0 0 1 8 2.3zm0 3.6c1.4 0 2.7.5 3.7 1.4l1.2-1.3A7.2 7.2 0 0 0 8 4.1c-1.8 0-3.5.7-4.9 1.9l1.2 1.3c1-.9 2.3-1.4 3.7-1.4zM8 9.4a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6z"/></symbol>
   <symbol id="i-bat" viewBox="0 0 27 12"><rect x=".5" y=".5" width="23" height="11" rx="3" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="20" height="8" rx="2"/><path d="M25 4v4a2 2 0 0 0 0-4z" opacity=".45"/></symbol>
@@ -380,9 +604,11 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
     <div class="brand"><img src="assets/mascot-head.png" alt="">GrabScale · MeeTang (น้องมีตัง)</div>
 
     <div class="tabs" role="tablist" aria-label="Prototype screens">
-      <button class="tab" role="tab" id="tab-home" data-go="home" aria-selected="false">Home screen</button>
-      <button class="tab" role="tab" id="tab-alert" data-go="alert" aria-selected="true">Sales alert</button>
+      <button class="tab" role="tab" id="tab-home" data-go="home" aria-selected="false">Widget</button>
+      <button class="tab" role="tab" id="tab-alert" data-go="alert" aria-selected="true">Alert</button>
       <button class="tab" role="tab" id="tab-learn" data-go="learn" aria-selected="false">Learn</button>
+      <button class="tab" role="tab" id="tab-record" data-go="record" aria-selected="false">Record</button>
+      <button class="tab" role="tab" id="tab-money" data-go="money" aria-selected="false">Money Book</button>
     </div>
 
     <section class="note-panel" data-note="home" hidden>
@@ -416,6 +642,28 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
         <li><span class="num"><svg class="i"><use href="#i-check"/></svg></span><div><b>Feedback loop</b>Merchants rate each lesson and say what to learn next.</div></li>
       </ul>
       <div class="time-saved">Time to learn<strong>60</strong>mins<span class="arrow">▶</span><strong class="after">5</strong>mins</div>
+    </section>
+    <section class="note-panel" data-note="record" hidden>
+      <div class="note-eyebrow">Effortless input</div>
+      <h1>Unified income &amp; expenses</h1>
+      <p class="long">Most stalls still write sales in a paper notebook. Recording here takes the same 30 seconds, and it turns into a live profit picture.</p>
+      <ul class="points">
+        <li><span class="num">4.1</span><div><b>Income</b>Grab orders sync on their own. Bank QR sales come from a screenshot, cash is spoken in the merchant's dialect, and Grab Tap to Pay (coming 2027) fills in the rest.</div></li>
+        <li><span class="num">4.2</span><div><b>Expense</b>Snap a market bill and MeeTang reads every line. A cost template for the stall type (Isan stall, made-to-order, noodles, drinks) lists the usual costs to tap.</div></li>
+      </ul>
+      <p class="hint">Try: tap the mic, Upload, Snap receipt, a template chip, or any cost line to edit it.</p>
+    </section>
+
+    <section class="note-panel" data-note="money" hidden>
+      <div class="note-eyebrow">Actionable insight</div>
+      <h1>Smart dashboard</h1>
+      <p class="long">Everything recorded becomes a Money Book: how the business grows, how close it is to its goal, and where it stands against similar stalls.</p>
+      <ul class="points">
+        <li><span class="num">5</span><div><b>Growth</b>Track today, this week and this month with charts and income by channel.</div></li>
+        <li><span class="num"><svg class="i"><use href="#i-target"/></svg></span><div><b>Goal journey</b>See how close this week's profit is to the goal.</div></li>
+        <li><span class="num"><svg class="i"><use href="#i-baht"/></svg></span><div><b>Profit intelligence</b>Contribution margin per dish, not only sales. Tap a dish for its cost breakdown.</div></li>
+        <li><span class="num dark"><svg class="i"><use href="#i-map"/></svg></span><div><b>Peer comparison</b>Compare with the same type of stall nearby, with the top fix one tap away.</div></li>
+      </ul>
     </section>
   </aside>
 
@@ -531,6 +779,11 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
 
             <div class="more-feed">
               <div class="feed-label">More from MeeTang</div>
+              <button class="card row-link" data-go="money">
+                <span class="ic"><svg class="i"><use href="#i-baht"/></svg></span>
+                <span><span class="t" style="display:block">Money Book</span><span class="s">This week: ฿22,200 left · 90% of goal</span></span>
+                <svg class="i chev"><use href="#i-chev"/></svg>
+              </button>
               <button class="card row-link" data-go="learn">
                 <span class="ic"><svg class="i"><use href="#i-image"/></svg></span>
                 <span><span class="t" style="display:block">Learn while you work</span><span class="s">3 lessons · 10 sec each</span></span>
@@ -638,6 +891,138 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
         </div>
       </section>
 
+      <!-- ===================== RECORD TODAY ===================== -->
+      <section class="screen" id="screen-record" hidden>
+        <div class="statusbar"><span>8:10 PM</span><span class="sys"><svg class="i"><use href="#i-sig"/></svg><svg class="i"><use href="#i-wifi"/></svg><svg class="i"><use href="#i-bat"/></svg></span></div>
+        <div class="rec-bar">
+          <button class="back" data-go="home" aria-label="Back to home screen"><svg class="i"><use href="#i-back"/></svg></button>
+          <div class="head"><div class="t">Record today</div><div class="s">Tue 15 Oct</div></div>
+          <img class="coin-cat" src="assets/mascot-coin.png" alt="MeeTang">
+          <div class="pill-select"><button class="dialect-btn" aria-haspopup="menu"><svg class="i bubble"><use href="#i-bubble"/></svg><span class="dl">Isan</span><svg class="i chev"><use href="#i-down"/></svg></button></div>
+          <button class="listen" data-say="record" aria-pressed="false"><svg class="i"><use href="#i-vol"/></svg>Listen</button>
+        </div>
+        <div class="scroll">
+          <div class="rec-feed">
+            <div class="ledger in">
+              <div class="ledger-head"><span class="arr"><svg class="i"><use href="#i-arrow-up"/></svg></span>Money in<span class="amt" id="inTotal">฿4,760</span></div>
+              <div class="src">
+                <span class="tile g"><svg class="i"><use href="#i-bike"/></svg></span>
+                <div><div class="nm">Grab orders</div><div class="sb">Synced automatically</div></div>
+                <span class="tag-auto">Auto</span>
+                <span class="val">฿1,840</span>
+              </div>
+              <div class="src">
+                <span class="tile grey"><svg class="i"><use href="#i-tap"/></svg></span>
+                <div><div class="nm">Tap to Pay</div><div class="sb">Card &amp; QR at your stall</div></div>
+                <button class="tag-soon" id="soonBtn">Soon</button>
+                <span class="val dash">–</span>
+              </div>
+              <div class="src" id="qrRow">
+                <span class="tile teal"><svg class="i"><use href="#i-qr"/></svg></span>
+                <div><div class="nm">Bank QR sales</div><div class="sb" id="qrSub">Screenshot uploaded</div></div>
+                <div class="qr-mid"><span class="thumb-scan"><img src="assets/qr-shot.jpg" alt="Bank app screenshot"></span><span class="tag-read" id="qrTag">Read <svg class="i"><use href="#i-check"/></svg></span></div>
+                <div class="qr-right"><span class="val">฿620</span><button class="btn-mini" id="qrUpload">Upload</button></div>
+              </div>
+              <div class="src cash">
+                <span class="tile g"><svg class="i"><use href="#i-cash"/></svg></span>
+                <div>
+                  <div class="nm">Cash</div>
+                  <div class="said-row" data-voice="cash"><button class="play" aria-label="Play what you said"><svg class="i"><use href="#i-play"/></svg></button><span class="thai" id="cashSaid" data-line="cash">เงินสดมื้อนี้สองพันสามร้อย</span></div>
+                </div>
+                <div class="cash-right"><span class="val" id="cashVal">฿2,300</span><button class="mic" id="micBtn" aria-label="Say your cash sales"><svg class="i"><use href="#i-mic"/></svg></button></div>
+              </div>
+            </div>
+
+            <div class="ledger out">
+              <div class="ledger-head"><span class="arr"><svg class="i"><use href="#i-arrow-down"/></svg></span>Money out<span class="amt" id="outTotal">฿1,390</span></div>
+              <div class="tpl" role="group" aria-label="Cost template">
+                <span class="lbl">Cost template</span>
+                <button class="tchip" data-tpl="isan" aria-pressed="true"><svg class="i"><use href="#i-check"/></svg>Isan stall</button>
+                <button class="tchip" data-tpl="made" aria-pressed="false"><svg class="i"><use href="#i-check"/></svg>Made-to-order</button>
+                <button class="tchip" data-tpl="noodle" aria-pressed="false"><svg class="i"><use href="#i-check"/></svg>Noodles</button>
+                <button class="tchip" data-tpl="drinks" aria-pressed="false"><svg class="i"><use href="#i-check"/></svg>Drinks</button>
+              </div>
+              <div class="snap-row" id="snapRow">
+                <button class="snap-btn" id="snapBtn"><svg class="i"><use href="#i-camera"/></svg>Snap receipt</button>
+                <span class="thumb-scan"><img src="assets/receipt.jpg" alt="Market receipt"></span>
+                <span class="read" id="snapRead">3 items read <svg class="i"><use href="#i-check"/></svg></span>
+              </div>
+              <div class="items" id="items"></div>
+              <div class="items"><button class="add-item" id="addItem"><svg class="i"><use href="#i-plus"/></svg>Add item by hand</button></div>
+              <div class="usual-cap">Usual costs from template · tap what you bought today</div>
+              <div class="usual" id="usual"></div>
+              <div class="rent"><svg class="i lock"><use href="#i-lock"/></svg><span>Stall rent · daily</span><span class="tag-auto">Auto</span><span class="p">฿60</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="rec-foot">
+          <div class="left-row"><span class="lbl">Left today</span><span class="big" id="leftToday">฿3,370</span><span class="io" id="ioToday">In ฿4,760 · Out ฿1,390</span></div>
+          <button class="btn-primary" id="saveBtn">Save today</button>
+          <div class="about">About 30 seconds</div>
+        </div>
+      </section>
+
+      <!-- ===================== MONEY BOOK ===================== -->
+      <section class="screen" id="screen-money" hidden>
+        <div class="statusbar"><span>8:12 PM</span><span class="sys"><svg class="i"><use href="#i-sig"/></svg><svg class="i"><use href="#i-wifi"/></svg><svg class="i"><use href="#i-bat"/></svg></span></div>
+        <div class="mb-bar">
+          <button class="back" data-go="record" aria-label="Back to Record today"><svg class="i"><use href="#i-chevl"/></svg></button>
+          <div class="head">
+            <div class="t">Money Book</div>
+            <div class="seg" role="tablist" aria-label="Period">
+              <button role="tab" data-period="day" aria-selected="false">Day</button>
+              <button role="tab" data-period="week" aria-selected="true">Week</button>
+              <button role="tab" data-period="month" aria-selected="false">Month</button>
+            </div>
+          </div>
+          <img class="coin-cat" src="assets/mascot-coin.png" alt="MeeTang">
+          <button class="listen" data-say="money" aria-pressed="false"><svg class="i"><use href="#i-vol"/></svg>Listen</button>
+        </div>
+        <div class="scroll">
+          <div class="mb-feed">
+            <button class="saved-banner" id="savedBanner" data-go="record"><span class="ok"><svg class="i"><use href="#i-check"/></svg></span><span id="savedText">Today saved • ฿3,370 left</span><span class="v">View ›</span></button>
+
+            <div class="mcard">
+              <div class="mcard-h"><h3 id="pTitle">This week</h3><span class="r" id="pRange">9–15 Oct</span></div>
+              <div class="week-top">
+                <div><div class="k" id="pLeftK">Left this week</div><div class="big" id="pLeft">฿22,200</div><span class="vs"><svg class="i"><use href="#i-arrow-up"/></svg><span id="pVs">9% vs last week</span></span></div>
+                <div class="io-col"><div class="in">In <b id="pIn">฿33,600</b></div><div class="out">Out <b id="pOut">฿11,400</b></div></div>
+              </div>
+              <div class="bars" id="bars"></div>
+              <div class="bars-x" id="barsX"></div>
+              <div class="chan"><span>Income channels</span><span><i class="c-grab"></i>Grab <b id="chGrab">฿13,200</b></span><span><i class="c-qr"></i>QR <b id="chQr">฿4,600</b></span><span><i class="c-cash"></i>Cash <b id="chCash">฿15,800</b></span></div>
+              <div class="chan-bar"><span class="c-grab" id="cbGrab"></span><span class="c-qr" id="cbQr"></span><span class="c-cash" id="cbCash"></span></div>
+            </div>
+
+            <div class="mcard">
+              <div class="mcard-h"><h3>Profit goal</h3><span class="r" id="gPeriod">this week</span></div>
+              <div class="goal-row">
+                <div class="donut"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.5" fill="none" stroke="#E3F2E8" stroke-width="4"/><circle id="gRing" cx="18" cy="18" r="15.5" fill="none" stroke="#00B14F" stroke-width="4" stroke-linecap="round" stroke-dasharray="87.6 97.4"/></svg><span id="gPct">90%</span></div>
+                <div class="goal-txt"><div class="g" id="gTxt">฿16,200 of ฿18,000</div><span class="pill" id="gPill">Almost there</span><div class="sub">Profit after ingredients and stall costs</div></div>
+              </div>
+            </div>
+
+            <div class="mcard">
+              <div class="mcard-h"><h3>Profit per plate</h3><span class="r">Profit • Margin</span></div>
+              <div class="plates" id="plates"></div>
+              <div class="tipbox" id="priceTip"><img src="assets/mascot-coin.png" alt=""><span id="priceTipTxt">Raise Gai Yang to ฿80 to earn ฿24 per plate</span><button class="btn-mini" id="changePrice">Change price</button></div>
+            </div>
+
+            <div class="mcard">
+              <div class="mcard-h" style="flex-direction:column;align-items:flex-start;gap:0"><h3>You vs 10 Isan stalls nearby</h3><span class="r">this week</span></div>
+              <div class="peer-dots"><span>Lower</span><span class="dots"><span class="d"></span><span class="d"></span><span class="d"></span><span class="d"></span><span class="d"></span><span class="d"></span><span class="d me"><svg class="i"><use href="#i-check"/></svg></span><span class="d"></span><span class="d"></span><span class="d"></span></span><span>Higher</span></div>
+              <div class="ptable">
+                <span class="h">Metric</span><span class="h c">You</span><span class="h c">Nearby avg</span><span></span>
+                <span>Orders per day</span><span class="c you">38</span><span class="c avg">42</span><span class="trend down"><svg class="i"><use href="#i-arrow-down"/></svg></span>
+                <span>Average order</span><span class="c you">฿95</span><span class="c avg">฿88</span><span class="trend up"><svg class="i"><use href="#i-arrow-up"/></svg></span>
+                <span>Dishes with photos</span><span class="c you" id="peerPhotos">4 of 10</span><span class="c avg">9 of 10</span><span class="trend down" id="peerPhotosT"><svg class="i"><use href="#i-arrow-down"/></svg></span>
+              </div>
+              <div class="topfix"><span class="ok"><svg class="i"><use href="#i-check"/></svg></span><span id="topFixTxt">Top fix: add photos to 6 dishes</span><button class="go" data-go="alert" data-focus="fix">Fix now ›</button></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <div class="toast" id="toast" role="status" aria-live="polite"><span class="ok"><svg class="i"><use href="#i-check"/></svg></span><span id="toastText"></span></div>
 
       <div class="sheet-backdrop" id="sheetBg"></div>
@@ -654,6 +1039,35 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
           <button class="chip" aria-pressed="false">Read my sales report</button>
         </div>
         <button class="btn-primary" id="sheetDone" disabled>Save</button>
+      </div>
+
+      <div class="sheet" id="itemSheet" role="dialog" aria-label="Cost item">
+        <span class="grab"></span>
+        <button class="x" data-close aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button>
+        <h3 id="itemSheetTitle">Edit item</h3>
+        <form class="form" id="itemForm">
+          <div class="frow">
+            <div class="fld"><span class="lab">Icon</span><button type="button" class="emoji-btn" id="fIcon" aria-label="Change icon"></button></div>
+            <div class="fld"><label for="fName">Ingredient</label><div class="box"><input id="fName" required placeholder="e.g. Pork, eggs, garlic"></div></div>
+          </div>
+          <div class="fld"><label for="fQty">Amount</label><div class="box"><svg class="i ic"><use href="#i-scale"/></svg><input id="fQty" type="number" inputmode="decimal" min="0" step="any" required><span class="unit"><select id="fUnit" aria-label="Unit"><option>kg</option><option>g</option><option>pcs</option><option>pack</option><option>bottle</option></select></span></div></div>
+          <div class="fld"><label for="fPrice">Price paid (฿)</label><div class="box"><svg class="i ic"><use href="#i-baht"/></svg><input id="fPrice" type="number" inputmode="decimal" min="0" step="any" required></div></div>
+          <div class="fld"><label for="fCat">Category (optional)</label><div class="box"><svg class="i ic"><use href="#i-tag"/></svg><select id="fCat"><option value="">Choose a category…</option><option>Meat &amp; fish</option><option>Vegetables</option><option>Rice &amp; noodles</option><option>Sauces &amp; spices</option><option>Packaging</option><option>Fuel</option></select></div></div>
+          <button type="button" class="convert" id="fConvert"><svg class="i"><use href="#i-swap"/></svg>Convert unit</button>
+          <div class="per-unit" id="fPer">฿90 per kg</div>
+          <button class="btn-primary" type="submit">Save item</button>
+        </form>
+      </div>
+
+      <div class="sheet" id="priceSheet" role="dialog" aria-label="Change price">
+        <span class="grab"></span>
+        <button class="x" data-close aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button>
+        <h3>Change Gai Yang price</h3>
+        <p>Cost per plate is ฿56 (chicken, marinade, charcoal, jaew sauce).</p>
+        <div class="stepper"><button type="button" id="pMinus" aria-label="Lower price">−</button><span class="pv" id="pVal">฿80</span><button type="button" id="pPlus" aria-label="Raise price">+</button></div>
+        <div class="price-stats"><div>Profit / plate<b id="psProfit">฿24</b></div><div>Margin<b id="psMargin">30%</b></div><div class="good">Extra this week<b id="psWeek">+฿420</b></div></div>
+        <div class="peer-note"><svg class="i"><use href="#i-map"/></svg>Nearby Isan stalls sell Gai Yang for ฿75–฿90</div>
+        <button class="btn-primary" id="pApply">Update price on my Grab menu</button>
       </div>
 
       <div class="home-indicator"></div>
@@ -715,6 +1129,7 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
     opts = opts || {};
     stopAudio();
     closeMenus();
+    closeSheets();
     state.screen = name;
     $$(".screen").forEach(function (s) { s.hidden = s.id !== "screen-" + name; });
     $$(".tab").forEach(function (t) { t.setAttribute("aria-selected", String(t.dataset.go === name)); });
@@ -734,7 +1149,8 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
         sc.scrollTop = 0;
       }
     }
-    if (name === "learn") $("#screen-learn .scroll").scrollTop = 0;
+    if (name === "learn" || name === "record") $("#screen-" + name + " .scroll").scrollTop = 0;
+    if (name === "money") { renderMoney(); $("#screen-money .scroll").scrollTop = 0; }
   }
 
   function focusFix() {
@@ -819,7 +1235,7 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
       setPlayIcon(playing, false);
       var dur = $(".dur", playing);
       if (dur) dur.textContent = "0:0" + dur.dataset.len;
-      if (playing.id === "listenBtn") playing.setAttribute("aria-pressed", "false"), playing.classList.remove("on");
+      if (playing.classList.contains("listen")) playing.setAttribute("aria-pressed", "false"), playing.classList.remove("on");
     }
     $$(".playing").forEach(function (x) { x.classList.remove("playing"); });
     playing = null;
@@ -908,6 +1324,7 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
       $("#wTipSub").textContent = n + " photo" + (n > 1 ? "s" : "") + " added today";
       toast("Photos are live on your menu");
       markDone("photos", true);
+      state.photosAdded = n;
     }, 900);
   });
 
@@ -955,9 +1372,10 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
     });
   });
   var sheet = $("#sheet"), sheetBg = $("#sheetBg"), sheetDone = $("#sheetDone");
-  function sheetOpen(on) { sheet.classList.toggle("show", on); sheetBg.classList.toggle("show", on); }
+  function sheetOpen(on) { if (on) openSheet(sheet); else closeSheets(); }
   $("#elseBtn").addEventListener("click", function () { sheetOpen(true); });
-  sheetBg.addEventListener("click", function () { sheetOpen(false); });
+  sheetBg.addEventListener("click", closeSheets);
+  $$("[data-close]").forEach(function (b) { b.addEventListener("click", closeSheets); });
   $$(".chip").forEach(function (c) {
     c.addEventListener("click", function () {
       c.setAttribute("aria-pressed", String(c.getAttribute("aria-pressed") !== "true"));
@@ -969,6 +1387,300 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
     sheetOpen(false);
     toast("Next lessons: " + picks.join(", "));
   });
+
+  /* =========================================================
+     Record today: unified income & expenses
+     ========================================================= */
+  var fmt = function (n) { return "฿" + Math.round(n).toLocaleString("en-US"); };
+  var fmt2 = function (n) { return "฿" + n.toFixed(2); };
+  var PARTICLE = { Central: "ค่ะ", Isan: "เด้อ", Northern: "เจ้า", Southern: "นิ" };
+  var TODAY = { Central: "วันนี้", Isan: "มื้อนี้", Northern: "วันนี้", Southern: "วันนี้" };
+  LINES.cash = {
+    Central: "เงินสดวันนี้สองพันสามร้อย",
+    Isan: "เงินสดมื้อนี้สองพันสามร้อย",
+    Northern: "เงินสดวันนี้สองพันสามร้อยเจ้า",
+    Southern: "เงินสดวันนี้สองพันสามร้อยนิ"
+  };
+
+  var rec = { grab: 1840, qr: 620, cash: 2300, rent: 60, tpl: "isan" };
+  state.saved = true;
+  state.photosAdded = 0;
+  var items = [
+    { icon: "assets/ing-chicken.png", name: "Chicken", qty: 5, unit: "kg", price: 450, cat: "Meat & fish" },
+    { icon: "assets/ing-papaya.png", name: "Green papaya", qty: 10, unit: "kg", price: 200, cat: "Vegetables" },
+    { icon: "assets/ing-rice.png", name: "Sticky rice", qty: 10, unit: "kg", price: 380, cat: "Rice & noodles" }
+  ];
+  var TEMPLATES = {
+    isan: [{ n: "Pla ra & fish sauce", p: 90, on: true }, { n: "Ice", p: 60, on: true }, { n: "Boxes ×50", p: 150, on: true }, { n: "Charcoal", p: 80, on: false }],
+    made: [{ n: "Basil & chili", p: 70, on: true }, { n: "Eggs ×30", p: 120, on: true }, { n: "Cooking oil", p: 95, on: false }, { n: "Cooking gas", p: 150, on: false }],
+    noodle: [{ n: "Rice noodles", p: 110, on: true }, { n: "Pork bones", p: 180, on: true }, { n: "Bean sprouts", p: 40, on: true }, { n: "Bowls ×50", p: 125, on: false }],
+    drinks: [{ n: "Ice", p: 60, on: true }, { n: "Cups ×100", p: 180, on: true }, { n: "Syrups", p: 120, on: false }, { n: "Straws", p: 35, on: false }]
+  };
+  var EMOJI = ["🍗", "🥬", "🍚", "🥚", "🧄", "🌶️", "🥩", "🐟", "🧂", "🧊", "🥡", "🔥"];
+  var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+  var iconHTML = function (ic) { return /\.(png|jpe?g)$/.test(ic) ? '<img src="' + ic + '" alt="">' : '<span class="emo">' + ic + "</span>"; };
+  var qtyTxt = function (it) { return (+it.qty).toLocaleString("en-US", { maximumFractionDigits: 2 }) + " " + it.unit; };
+
+  function renderItems(flashIdx) {
+    $("#items").innerHTML = items.map(function (it, i) {
+      return '<button class="item' + (i === flashIdx ? " new" : "") + '" data-i="' + i + '">' + iconHTML(it.icon) +
+        '<span class="q"><b>' + esc(it.name) + "</b> <span>· " + qtyTxt(it) + '</span></span><span class="p">' + fmt(it.price) + "</span></button>";
+    }).join("");
+  }
+  function renderUsual() {
+    $("#usual").innerHTML = TEMPLATES[rec.tpl].map(function (c, i) {
+      return '<button class="uchip" data-u="' + i + '" aria-pressed="' + c.on + '"><span class="n"><svg class="i"><use href="#i-check"/></svg>' + esc(c.n) + '</span><span class="pr">' + fmt(c.p) + "</span></button>";
+    }).join("");
+  }
+  function totals() {
+    var inT = rec.grab + rec.qr + rec.cash;
+    var outT = rec.rent + items.reduce(function (a, it) { return a + (+it.price || 0); }, 0) +
+      TEMPLATES[rec.tpl].reduce(function (a, c) { return a + (c.on ? c.p : 0); }, 0);
+    return { inT: inT, outT: outT, left: inT - outT };
+  }
+  function recalc(changed) {
+    var t = totals();
+    $("#inTotal").textContent = fmt(t.inT);
+    $("#outTotal").textContent = fmt(t.outT);
+    $("#leftToday").textContent = fmt(t.left);
+    $("#ioToday").textContent = "In " + fmt(t.inT) + " · Out " + fmt(t.outT);
+    if (changed) {
+      state.saved = false;
+      var sb = $("#saveBtn");
+      sb.classList.remove("done"); sb.disabled = false; sb.textContent = "Save today";
+    }
+  }
+
+  $$(".tchip").forEach(function (c) {
+    c.addEventListener("click", function () {
+      rec.tpl = c.dataset.tpl;
+      $$(".tchip").forEach(function (x) { x.setAttribute("aria-pressed", String(x === c)); });
+      renderUsual(); recalc(true);
+      toast("Template: " + c.textContent.trim() + ". Tap what you bought today");
+    });
+  });
+  $("#usual").addEventListener("click", function (e) {
+    var b = e.target.closest(".uchip"); if (!b) return;
+    var c = TEMPLATES[rec.tpl][+b.dataset.u];
+    c.on = !c.on; b.setAttribute("aria-pressed", String(c.on));
+    recalc(true);
+  });
+
+  function fakeRead(row, tagEl, busyTxt, doneHTML, msg) {
+    row.classList.add("scanning");
+    tagEl.innerHTML = busyTxt;
+    setTimeout(function () {
+      row.classList.remove("scanning");
+      tagEl.innerHTML = doneHTML;
+      toast(msg);
+    }, 1400);
+  }
+  $("#qrUpload").addEventListener("click", function () {
+    fakeRead($("#qrRow"), $("#qrTag"), "Reading…", 'Read <svg class="i"><use href="#i-check"/></svg>', "Found 4 transfers in your screenshot · ฿620");
+  });
+  $("#snapBtn").addEventListener("click", function () {
+    fakeRead($("#snapRow"), $("#snapRead"), "Reading bill…", '3 items read <svg class="i"><use href="#i-check"/></svg>', "MeeTang read 3 items from your market bill");
+    setTimeout(function () { renderItems(); $$("#items .item").forEach(function (x) { x.classList.add("new"); }); }, 1400);
+  });
+  $("#soonBtn").addEventListener("click", function () { toast("Grab Tap to Pay arrives in 2027. Card and QR sales will fill in by themselves"); });
+  $("#micBtn").addEventListener("click", function () {
+    var m = this, said = $("#cashSaid");
+    if (m.classList.contains("rec")) return;
+    stopAudio();
+    m.classList.add("rec"); said.textContent = "กำลังฟัง…";
+    setTimeout(function () {
+      m.classList.remove("rec");
+      said.textContent = LINES.cash[state.dialect];
+      rec.cash = 2300; recalc(false);
+      toast("Heard: cash sales ฿2,300");
+    }, 2200);
+  });
+
+  $("#saveBtn").addEventListener("click", function () {
+    var b = this;
+    b.disabled = true; b.textContent = "Saving…";
+    setTimeout(function () {
+      state.saved = true;
+      b.disabled = false; b.classList.add("done");
+      b.innerHTML = '<svg class="i"><use href="#i-check"/></svg>Saved';
+      go("money");
+      toast("Today saved · " + fmt(totals().left) + " left");
+    }, 700);
+  });
+
+  /* ---- Add / edit a cost item (form sheet) ---- */
+  var editIdx = -1, fIcon = "🥚";
+  var itemSheet = $("#itemSheet");
+  function setIcon(ic) { fIcon = ic; $("#fIcon").innerHTML = iconHTML(ic); }
+  function perUnit() {
+    var q = parseFloat($("#fQty").value), p = parseFloat($("#fPrice").value), u = $("#fUnit").value;
+    if (!(q > 0) || !(p >= 0)) { $("#fPer").textContent = "Enter amount and price to see the price per unit"; return; }
+    var t = fmt2(p / q).replace(".00", "") + " per " + u;
+    if (u === "g") t += " · " + fmt(p / q * 1000) + " per kg";
+    $("#fPer").textContent = t;
+  }
+  function openItem(i) {
+    editIdx = i;
+    var it = i > -1 ? items[i] : { icon: "🥚", name: "", qty: "", unit: "kg", price: "", cat: "" };
+    $("#itemSheetTitle").textContent = i > -1 ? "Edit item" : "Add item";
+    setIcon(it.icon);
+    $("#fName").value = it.name; $("#fQty").value = it.qty; $("#fUnit").value = it.unit;
+    $("#fPrice").value = it.price; $("#fCat").value = it.cat || "";
+    perUnit();
+    openSheet(itemSheet);
+  }
+  $("#items").addEventListener("click", function (e) { var b = e.target.closest(".item"); if (b) openItem(+b.dataset.i); });
+  $("#addItem").addEventListener("click", function () { openItem(-1); });
+  $("#fIcon").addEventListener("click", function () {
+    var k = EMOJI.indexOf(fIcon);
+    setIcon(EMOJI[(k + 1) % EMOJI.length]);
+  });
+  ["#fQty", "#fPrice", "#fUnit"].forEach(function (s) { $(s).addEventListener("input", perUnit); });
+  $("#fConvert").addEventListener("click", function () {
+    var u = $("#fUnit"), q = $("#fQty"), v = parseFloat(q.value) || 0;
+    if (u.value === "kg") { u.value = "g"; q.value = +(v * 1000).toFixed(2); }
+    else if (u.value === "g") { u.value = "kg"; q.value = +(v / 1000).toFixed(3); }
+    else { toast("Convert works for weight: kg ↔ g"); return; }
+    perUnit();
+  });
+  $("#itemForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var it = { icon: fIcon, name: $("#fName").value.trim(), qty: parseFloat($("#fQty").value), unit: $("#fUnit").value, price: parseFloat($("#fPrice").value), cat: $("#fCat").value };
+    if (!it.name || !(it.qty > 0) || !(it.price >= 0)) { toast("Add a name, amount and price"); return; }
+    var idx = editIdx;
+    if (idx > -1) items[idx] = it; else { items.push(it); idx = items.length - 1; }
+    renderItems(idx); recalc(true); closeSheets();
+    toast((editIdx > -1 ? "Updated " : "Added ") + it.name + " · " + fmt(it.price));
+  });
+
+  renderItems(); renderUsual(); recalc(false);
+
+  /* =========================================================
+     Money Book: smart dashboard
+     ========================================================= */
+  var period = "week";
+  var PLATES = [
+    { n: "Larb Moo", img: "assets/larbmoo.jpg", price: 60, cost: [["Minced pork 120 g", 22], ["Herbs & shallot", 6], ["Toasted rice & chili", 3], ["Sticky rice", 5]] },
+    { n: "Som Tam", img: "assets/somtam.jpg", price: 45, cost: [["Green papaya", 8], ["Tomato & long bean", 6], ["Pla ra & fish sauce", 5], ["Peanuts & dried shrimp", 4], ["Palm sugar & lime", 4]] },
+    { n: "Gai Yang", img: "assets/gaiyang.jpg", price: 70, cost: [["Half chicken", 42], ["Marinade", 6], ["Charcoal", 4], ["Jaew dipping sauce", 4]] }
+  ];
+  var costOf = function (pl) { return pl.cost.reduce(function (a, c) { return a + c[1]; }, 0); };
+
+  function periodData() {
+    var t = totals(), d = t.left - 3370, cashD = rec.cash - 2300;
+    if (period === "day") {
+      var hrs = [120, 640, 980, 520, 160, 140, 260, 720, 860, 360].map(function (v) { return v * t.inT / 4760; });
+      var mx = hrs.indexOf(Math.max.apply(null, hrs));
+      return { title: "Today", range: "Tue 15 Oct", leftK: "Left today", left: t.left, inT: t.inT, outT: t.outT, vs: "4% vs last Tue",
+        bars: hrs, labels: ["10", "11", "12", "13", "14", "15", "16", "17", "18", "19"], hi: mx, hiLab: "Peak " + fmt(hrs[mx]),
+        ch: [rec.grab, rec.qr, rec.cash], goal: [t.left - 1060, 2600], gp: "today" };
+    }
+    if (period === "month") {
+      var mIn = 71500 - 4760 + t.inT, mLeft = 46800 + d;
+      return { title: "This month", range: "1–15 Oct", leftK: "Left this month", left: mLeft, inT: mIn, outT: mIn - mLeft, vs: "12% vs Sep (same days)",
+        bars: [72100, 76400, 78300, 84200, 88900, mLeft], labels: ["May", "Jun", "Jul", "Aug", "Sep", "Oct"], hi: 5, hiLab: fmt(mLeft) + " so far",
+        ch: [29700, 9800, 32000 + cashD], goal: [33900 + d, 72000], gp: "this month" };
+    }
+    var wIn = 33600 - 4760 + t.inT, wOut = 11400 - 1390 + t.outT;
+    return { title: "This week", range: "9–15 Oct", leftK: "Left this week", left: wIn - wOut, inT: wIn, outT: wOut, vs: "9% vs last week",
+      bars: [2950, 3000, 3450, 3800, 2500, 3130, t.left], labels: ["W", "T", "F", "S", "S", "M", "T"], hi: 6, hiLab: fmt(t.left),
+      ch: [13200, 4600, 15800 + cashD], goal: [16200 + d, 18000], gp: "this week" };
+  }
+
+  function renderMoney() {
+    var p = periodData(), t = totals();
+    $$(".seg button").forEach(function (b) { b.setAttribute("aria-selected", String(b.dataset.period === period)); });
+    var sb = $("#savedBanner");
+    sb.classList.toggle("pending", !state.saved);
+    $("#savedText").textContent = state.saved ? "Today saved • " + fmt(t.left) + " left" : "Today not saved yet • " + fmt(t.left) + " so far";
+    $("#pTitle").textContent = p.title; $("#pRange").textContent = p.range; $("#pLeftK").textContent = p.leftK;
+    $("#pLeft").textContent = fmt(p.left); $("#pIn").textContent = fmt(p.inT); $("#pOut").textContent = fmt(p.outT); $("#pVs").textContent = p.vs;
+    var max = Math.max.apply(null, p.bars);
+    $("#bars").innerHTML = p.bars.map(function (v, i) {
+      return '<div class="b' + (i === p.hi ? " hi" : "") + '">' + (i === p.hi ? '<span class="lab">' + p.hiLab + "</span>" : "") +
+        '<div class="bar" style="height:' + Math.max(6, v / max * 100) + '%"></div></div>';
+    }).join("");
+    $("#barsX").innerHTML = p.labels.map(function (l) { return "<span>" + l + "</span>"; }).join("");
+    var chSum = p.ch[0] + p.ch[1] + p.ch[2];
+    $("#chGrab").textContent = fmt(p.ch[0]); $("#chQr").textContent = fmt(p.ch[1]); $("#chCash").textContent = fmt(p.ch[2]);
+    $("#cbGrab").style.width = (p.ch[0] / chSum * 100) + "%"; $("#cbQr").style.width = (p.ch[1] / chSum * 100) + "%"; $("#cbCash").style.width = (p.ch[2] / chSum * 100) + "%";
+    var pct = Math.round(p.goal[0] / p.goal[1] * 100);
+    $("#gPct").textContent = pct + "%";
+    $("#gRing").setAttribute("stroke-dasharray", (Math.min(100, Math.max(0, pct)) / 100 * 97.39).toFixed(2) + " 97.39");
+    $("#gTxt").textContent = fmt(p.goal[0]) + " of " + fmt(p.goal[1]);
+    $("#gPill").textContent = pct >= 100 ? "Goal reached" : pct >= 85 ? "Almost there" : pct >= 40 ? "On track" : "Keep going";
+    $("#gPeriod").textContent = p.gp;
+    renderPlates(); updatePeers();
+  }
+  $$(".seg button").forEach(function (b) { b.addEventListener("click", function () { period = b.dataset.period; renderMoney(); }); });
+
+  function renderPlates() {
+    var open = $$(".plate.open").map(function (x) { return x.dataset.k; });
+    $("#plates").innerHTML = PLATES.map(function (pl, i) {
+      var c = costOf(pl), pf = pl.price - c, mg = Math.round(pf / pl.price * 100);
+      return '<div class="plate' + (open.indexOf(String(i)) > -1 ? " open" : "") + '" data-k="' + i + '">' +
+        '<button class="plate-row" aria-label="' + pl.n + ' cost breakdown"><img src="' + pl.img + '" alt=""><span class="nm">' + pl.n + (mg < 25 ? '<span class="lowm">Low margin</span>' : "") + "</span><span></span>" +
+        '<span class="pf">' + fmt2(pf) + '</span><span class="mg">' + mg + "%</span></button>" +
+        '<div class="breakdown">' + pl.cost.map(function (x) { return '<div class="ln"><span>' + x[0] + "</span><span>" + fmt(x[1]) + "</span></div>"; }).join("") +
+        '<div class="ln tot"><span>Cost per plate</span><span>' + fmt(c) + '</span></div><div class="ln"><span>Selling price</span><span>' + fmt(pl.price) + "</span></div>" +
+        '<div class="ln tot pf"><span>Profit per plate</span><span>' + fmt(pf) + " · " + mg + "%</span></div></div></div>";
+    }).join("");
+  }
+  $("#plates").addEventListener("click", function (e) { var r = e.target.closest(".plate-row"); if (r) r.parentNode.classList.toggle("open"); });
+
+  var newPrice = 80;
+  function renderPriceSheet() {
+    var c = costOf(PLATES[2]);
+    $("#pVal").textContent = fmt(newPrice);
+    $("#psProfit").textContent = fmt(newPrice - c);
+    $("#psMargin").textContent = Math.round((newPrice - c) / newPrice * 100) + "%";
+    var extra = (newPrice - PLATES[2].price) * 42;
+    $("#psWeek").textContent = (extra >= 0 ? "+" : "−") + fmt(Math.abs(extra)).replace("฿", "฿");
+  }
+  $("#changePrice").addEventListener("click", function () { newPrice = Math.max(PLATES[2].price, 80); renderPriceSheet(); openSheet($("#priceSheet")); });
+  $("#pMinus").addEventListener("click", function () { newPrice = Math.max(60, newPrice - 5); renderPriceSheet(); });
+  $("#pPlus").addEventListener("click", function () { newPrice = Math.min(100, newPrice + 5); renderPriceSheet(); });
+  $("#pApply").addEventListener("click", function () {
+    PLATES[2].price = newPrice;
+    var pf = newPrice - costOf(PLATES[2]);
+    closeSheets(); renderPlates();
+    var tip = $("#priceTip");
+    tip.classList.add("done");
+    $("#priceTipTxt").textContent = "Gai Yang is now " + fmt(newPrice) + " and earns " + fmt(pf) + " per plate";
+    toast("Gai Yang updated to " + fmt(newPrice) + " on your Grab menu");
+  });
+
+  function updatePeers() {
+    var have = 4 + state.photosAdded, left = 10 - have;
+    $("#peerPhotos").textContent = have + " of 10";
+    var tr = $("#peerPhotosT"), up = have >= 9;
+    tr.className = "trend " + (up ? "up" : "down");
+    tr.innerHTML = '<svg class="i"><use href="#i-arrow-' + (up ? "up" : "down") + '"/></svg>';
+    $("#topFixTxt").textContent = state.photosAdded ? (left > 0 ? "Top fix: add photos to " + left + " more dishes" : "All dishes have photos") : "Top fix: add photos to 6 dishes";
+  }
+
+  /* ---- Listen: MeeTang reads the screen summary in your dialect ---- */
+  function summary(kind) {
+    var t = totals(), d = state.dialect, pa = PARTICLE[d];
+    if (kind === "record") return TODAY[d] + "เงินเข้า " + t.inT + " บาท เงินออก " + t.outT + " บาท เหลือ " + t.left + " บาท " + pa;
+    var p = periodData();
+    return p.title === "Today" ? TODAY[d] + "เหลือ " + p.left + " บาท " + pa : "ช่วงนี้เหลือ " + p.left + " บาท ถึงเป้าแล้ว " + Math.round(p.goal[0] / p.goal[1] * 100) + " เปอร์เซ็นต์ " + pa;
+  }
+  $$(".listen[data-say]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      if (playing === btn) { stopAudio(); return; }
+      stopAudio();
+      playing = btn;
+      btn.classList.add("on"); btn.setAttribute("aria-pressed", "true");
+      var ended = false;
+      var finish = function () { if (ended || playing !== btn) return; ended = true; stopAudio(); };
+      var fb = speak(summary(btn.dataset.say), finish);
+      setTimeout(finish, fb || 12000);
+    });
+  });
+
+  function openSheet(el) { closeSheets(); el.classList.add("show"); $("#sheetBg").classList.add("show"); }
+  function closeSheets() { $$(".sheet").forEach(function (x) { x.classList.remove("show"); }); $("#sheetBg").classList.remove("show"); }
 
   /* ---- Toast ---- */
   var toastTimer;
@@ -983,11 +1695,11 @@ svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; s
   /* ---- Start ---- */
   function fromHash() {
     var h = (location.hash || "").replace("#", "");
-    if (["home", "alert", "learn"].indexOf(h) > -1 && h !== state.screen) go(h);
+    if (["home", "alert", "learn", "record", "money"].indexOf(h) > -1 && h !== state.screen) go(h);
   }
   window.addEventListener("hashchange", fromHash);
   var start = (location.hash || "").replace("#", "");
-  go(["home", "alert", "learn"].indexOf(start) > -1 ? start : "alert");
+  go(["home", "alert", "learn", "record", "money"].indexOf(start) > -1 ? start : "alert");
 })();
 </script>
 </body>
