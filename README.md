@@ -21,3 +21,11 @@ Deep links: `index.html#home`, `#alert`, `#learn`, `#record`, `#money`.
 Voice playback uses the browser's Thai text-to-speech voice when one is installed (Safari/iOS, Chrome on most systems); otherwise the waveform animates without sound.
 
 Food photos and the mascot in `assets/` are cropped from the team's UI mockup.
+
+## Phone experience
+
+On a phone the prototype runs full-screen like an app: the tab bar switches screens, the **i** button shows the notes for the current screen, sheets close by dragging down, and the home notification can be swiped away. It can be added to the home screen (PWA manifest included).
+
+## Build and deploy
+
+`python3 scripts/build.py` writes a minified static bundle to `dist/` (markup, `app-1.css`, `app-2.css`, `app.js`, assets). Deploy `dist/` to any static host; it is deployed on Vercel as a static site with no build step.
